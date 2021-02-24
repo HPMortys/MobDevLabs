@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		734168FB25E112D500365905 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734168FA25E112D500365905 /* DemoView.swift */; };
+		734D2A2A25DE87190011C019 /* DrawingViewConrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D2A2925DE87190011C019 /* DrawingViewConrollerViewController.swift */; };
 		73AC709325D599C5007D1263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AC709225D599C5007D1263 /* AppDelegate.swift */; };
 		73AC709525D599C5007D1263 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AC709425D599C5007D1263 /* SceneDelegate.swift */; };
 		73AC709725D599C5007D1263 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AC709625D599C5007D1263 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		734168FA25E112D500365905 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		734D2A2925DE87190011C019 /* DrawingViewConrollerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewConrollerViewController.swift; sourceTree = "<group>"; };
 		73AC708F25D599C5007D1263 /* AppMor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AC709225D599C5007D1263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AC709425D599C5007D1263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				73AC709B25D599D7007D1263 /* Assets.xcassets */,
 				73AC709D25D599D7007D1263 /* LaunchScreen.storyboard */,
 				73AC70A025D599D7007D1263 /* Info.plist */,
+				734D2A2925DE87190011C019 /* DrawingViewConrollerViewController.swift */,
+				734168FA25E112D500365905 /* DemoView.swift */,
 			);
 			path = AppMor;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				73AC709725D599C5007D1263 /* ViewController.swift in Sources */,
+				734D2A2A25DE87190011C019 /* DrawingViewConrollerViewController.swift in Sources */,
 				73AC709325D599C5007D1263 /* AppDelegate.swift in Sources */,
+				734168FB25E112D500365905 /* DemoView.swift in Sources */,
 				73AC709525D599C5007D1263 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

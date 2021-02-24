@@ -8,21 +8,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--graph and chart-->
         <scene sceneID="tVB-bn-aYd">
             <objects>
-                <viewController id="fYI-jb-4FE" sceneMemberID="viewController">
+                <viewController id="fYI-jb-4FE" customClass="DrawingViewConrollerViewController" customModule="AppMor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bjv-WX-MV8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eC-z6-chA" customClass="DemoView" customModule="AppMor" customModuleProvider="target">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="1H4-Ci-lna"/>
+                                    <constraint firstAttribute="height" constant="240" id="3vG-aX-OIZ"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ELS-jH-gfU">
+                                <rect key="frame" x="150.5" y="290" width="113" height="32"/>
+                                <segments>
+                                    <segment title="Graph"/>
+                                    <segment title="Chart"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChange:" destination="fYI-jb-4FE" eventType="valueChanged" id="OIf-zu-4XS"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="JLb-xf-VZz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1eC-z6-chA" firstAttribute="top" secondItem="ELS-jH-gfU" secondAttribute="bottom" constant="7" id="4cU-hz-opw"/>
+                            <constraint firstItem="1eC-z6-chA" firstAttribute="centerX" secondItem="Bjv-WX-MV8" secondAttribute="centerX" id="8ay-bI-ZPb"/>
+                            <constraint firstItem="ELS-jH-gfU" firstAttribute="centerX" secondItem="Bjv-WX-MV8" secondAttribute="centerX" id="M4j-Uc-Wcy"/>
+                            <constraint firstItem="1eC-z6-chA" firstAttribute="centerY" secondItem="Bjv-WX-MV8" secondAttribute="centerY" id="Ujl-ik-CU3"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="x98-Ny-XmT"/>
+                    <tabBarItem key="tabBarItem" title="graph and chart" image="square.and.pencil" catalog="system" id="x98-Ny-XmT"/>
+                    <connections>
+                        <outlet property="viewDraw" destination="1eC-z6-chA" id="nSs-Jy-KYG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSv-2b-AO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="603"/>
+            <point key="canvasLocation" x="613.04347826086962" y="602.67857142857144"/>
         </scene>
         <!--Author info-->
         <scene sceneID="puZ-qX-Ss2">
@@ -76,6 +106,7 @@
     </scenes>
     <resources>
         <image name="scribble" catalog="system" width="128" height="118"/>
+        <image name="square.and.pencil" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

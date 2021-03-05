@@ -9,18 +9,18 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDataSource {
     
-    private var books = [Book]()
+    private var Search = [Movie]()
     @IBOutlet var table: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let localData = self.readLocalFile(forName: "BooksList") {
+        if let localData = self.readLocalFile(forName: "MoviesList") {
             self.parse(jsonData: localData)
         }
         table.tableFooterView = UIView()
         table.rowHeight = UITableView.automaticDimension
-        table.estimatedRowHeight = 600
+        table.estimatedRowHeight = 85
     }
     
     func readLocalFile(forName name: String) -> Data? {
@@ -41,10 +41,11 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     func parse(jsonData: Data) {
         do {
-            let decoded_books = try JSONDecoder().decode(Books.self,
+            let decoded_movies = try JSONDecoder().decode(Movies.self,
                                                        from: jsonData)
-            self.books = decoded_books.books
             
+            self.Search = decoded_movies.Search
+        
             DispatchQueue.main.async {
                 self.table.reloadData()
                 self.table.dataSource = self
@@ -58,27 +59,27 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        return Search.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell") as? BookCell else { return UITableViewCell()}
+    
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as? MovieCell else { return UITableViewCell()}
+      
         
-        
-        let filename = books[indexPath.row].image
+        let filename = Search[indexPath.row].Poster
         if filename != ""{
-            let image = UIImage(named: "Images/\(filename)")
-            cell.imageV.image = image
+            let image = UIImage(named: "Posters/\(filename)")
+            cell.posterV.image = image
         } else {
-            cell.imageV.image = UIImage()
+            cell.posterV.image = UIImage()
         }
-        
+   
 
-        cell.titleLbl.text = books[indexPath.row].title
-        cell.subtitleLbl.text = books[indexPath.row].subtitle
-        cell.priceLbl.text = books[indexPath.row].price
+        cell.titleLbl.text = Search[indexPath.row].Title
+        cell.yearLbl.text = Search[indexPath.row].Year
+        cell.typeLbl.text = Search[indexPath.row].Type
     
         
         return cell

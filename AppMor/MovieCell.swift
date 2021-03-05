@@ -1,5 +1,5 @@
 //
-//  BookCell.swift
+//  MovieCell.swift
 //  AppMor
 //
 //  Created by Den Mor on 03.03.2021.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class BookCell: UITableViewCell {
+class MovieCell: UITableViewCell {
  
-    @IBOutlet var imageV: UIImageView!
+    @IBOutlet var posterV: UIImageView!
  
     @IBOutlet var titleLbl: UILabel!
-    @IBOutlet var subtitleLbl: UILabel!
-    @IBOutlet var priceLbl: UILabel!
+    @IBOutlet var yearLbl: UILabel!
+    @IBOutlet var typeLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

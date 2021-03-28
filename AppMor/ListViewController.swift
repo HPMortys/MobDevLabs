@@ -7,26 +7,50 @@
 
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    private var Search = [Movie]()
+    
     @IBOutlet var table: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     
+    var Search = [Movie]()
+    private var searching = false
+    private var searchTitle  = [Movie]()
+    
+    
+
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
+    @objc private func addTarget(){
+        performSegue(withIdentifier: "addForm", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let localData = self.readLocalFile(forName: "MoviesList") {
             self.parse(jsonData: localData)
         }
+        table.delegate = self
+        table.dataSource = self
         table.tableFooterView = UIView()
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 85
+        
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTarget))
+              
     }
+    
+    
     
     func readLocalFile(forName name: String) -> Data? {
         do {
             if let bundlePath = Bundle.main.path(forResource: name,
-                                                 ofType: "json"),
+                                                 ofType: "txt"),
                 let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 return jsonData
             }
@@ -48,7 +72,6 @@ class ListViewController: UIViewController, UITableViewDataSource {
         
             DispatchQueue.main.async {
                 self.table.reloadData()
-                self.table.dataSource = self
             }
            
             
@@ -59,16 +82,27 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Search.count
+        if searching{
+            return searchTitle.count
+        } else { return Search.count }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-    
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as? MovieCell else { return UITableViewCell()}
       
+        var info_arr = [Movie]()
         
-        let filename = Search[indexPath.row].Poster
+        if searching{
+            info_arr = searchTitle
+        }
+        else {
+            info_arr = Search
+        }
+        
+        
+    
+        let filename = info_arr[indexPath.row].Poster
         if filename != ""{
             let image = UIImage(named: "Posters/\(filename)")
             cell.posterV.image = image
@@ -76,13 +110,108 @@ class ListViewController: UIViewController, UITableViewDataSource {
             cell.posterV.image = UIImage()
         }
    
-
-        cell.titleLbl.text = Search[indexPath.row].Title
-        cell.yearLbl.text = Search[indexPath.row].Year
-        cell.typeLbl.text = Search[indexPath.row].Type
-    
+        
+        cell.titleLbl.text = info_arr[indexPath.row].Title
+        cell.yearLbl.text = info_arr[indexPath.row].Year
+        cell.typeLbl.text = info_arr[indexPath.row].Type
+        
+       
         
         return cell
     }
+    
+    
+    // segue TODO
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var info_arr = [Movie]()
+        if searching{
+            info_arr = searchTitle
+        }
+        else {
+            info_arr = Search
+        }
+        
+        if (info_arr[(table.indexPathForSelectedRow?.row)!].imdbID) != "noid"{
+            performSegue(withIdentifier: "showDetails", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        var info_arr = [Movie]()
+        if searching{
+            info_arr = searchTitle
+        }
+        else {
+            info_arr = Search
+        }
+        
+    
+        if segue.identifier == "showDetails"
+        {
+        if let localData = self.readLocalFile(forName: "Programming assignment 4 1/\(info_arr[(table.indexPathForSelectedRow?.row)!].imdbID)") {
+            
+            
+            do {
+                let decoded_movie = try JSONDecoder().decode(Movie.self,
+                                                           from: localData)
+                
+                if let destionation = segue.destination as? MovieInfoViewController{
+                    destionation.movie = decoded_movie       }
+        
+            } catch {
+                print("decode error")
+            }
+        }
+        }
+    }
+    
+    
+    // delete TODO
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            table.beginUpdates()
+            Search.remove(at: indexPath.row)
+            table.deleteRows(at: [indexPath], with: .fade)
+            
+            table.endUpdates()
+        }
+    }
+    
+    
+    // search TODO
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            searching = false
+        }
+        else {
+            searchTitle = Search.filter({$0.Title.prefix(searchText.count) == searchText})
+            searching = true
+        }
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false 
+    }
+    
+    
+    //add new movie
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
 }
+
 

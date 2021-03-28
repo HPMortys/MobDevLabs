@@ -10,7 +10,10 @@
 		7340A4D725E6BB9B00B97DD8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7340A4D625E6BB9B00B97DD8 /* ListViewController.swift */; };
 		7340A4DA25E6C2CD00B97DD8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7340A4D925E6C2CD00B97DD8 /* Movie.swift */; };
 		734168FB25E112D500365905 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734168FA25E112D500365905 /* DemoView.swift */; };
+		734B883E25F3A91900BEF242 /* Programming assignment 4 1 in Resources */ = {isa = PBXBuildFile; fileRef = 734B883D25F3A91900BEF242 /* Programming assignment 4 1 */; };
+		734B884125F403DD00BEF242 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734B884025F403DD00BEF242 /* MovieInfoViewController.swift */; };
 		734D2A2A25DE87190011C019 /* DrawingViewConrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D2A2925DE87190011C019 /* DrawingViewConrollerViewController.swift */; };
+		7352F5E22604F61C002B5476 /* MovieAddForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7352F5E12604F61C002B5476 /* MovieAddForm.swift */; };
 		73AC709325D599C5007D1263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AC709225D599C5007D1263 /* AppDelegate.swift */; };
 		73AC709525D599C5007D1263 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AC709425D599C5007D1263 /* SceneDelegate.swift */; };
 		73AC709725D599C5007D1263 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AC709625D599C5007D1263 /* ViewController.swift */; };
@@ -18,7 +21,7 @@
 		73AC709C25D599D7007D1263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AC709B25D599D7007D1263 /* Assets.xcassets */; };
 		73AC709F25D599D7007D1263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AC709D25D599D7007D1263 /* LaunchScreen.storyboard */; };
 		73B2A8F225F2811B0017D494 /* Posters in Resources */ = {isa = PBXBuildFile; fileRef = 73B2A8F125F2811A0017D494 /* Posters */; };
-		73B2A8FA25F282220017D494 /* MoviesList.json in Resources */ = {isa = PBXBuildFile; fileRef = 73B2A8F925F282220017D494 /* MoviesList.json */; };
+		73B2A8FA25F282220017D494 /* MoviesList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 73B2A8F925F282220017D494 /* MoviesList.txt */; };
 		73F28BAF25F0178D00378536 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F28BAE25F0178D00378536 /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +29,10 @@
 		7340A4D625E6BB9B00B97DD8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7340A4D925E6C2CD00B97DD8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		734168FA25E112D500365905 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		734B883D25F3A91900BEF242 /* Programming assignment 4 1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Programming assignment 4 1"; sourceTree = "<group>"; };
+		734B884025F403DD00BEF242 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
 		734D2A2925DE87190011C019 /* DrawingViewConrollerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewConrollerViewController.swift; sourceTree = "<group>"; };
+		7352F5E12604F61C002B5476 /* MovieAddForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAddForm.swift; sourceTree = "<group>"; };
 		73AC708F25D599C5007D1263 /* AppMor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AC709225D599C5007D1263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AC709425D599C5007D1263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +42,7 @@
 		73AC709E25D599D7007D1263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73AC70A025D599D7007D1263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73B2A8F125F2811A0017D494 /* Posters */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Posters; path = ../../../../.Trash/Posters; sourceTree = "<group>"; };
-		73B2A8F925F282220017D494 /* MoviesList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MoviesList.json; sourceTree = "<group>"; };
+		73B2A8F925F282220017D494 /* MoviesList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MoviesList.txt; sourceTree = "<group>"; };
 		73F28BAE25F0178D00378536 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +76,8 @@
 		73AC709125D599C5007D1263 /* AppMor */ = {
 			isa = PBXGroup;
 			children = (
-				73B2A8F925F282220017D494 /* MoviesList.json */,
+				734B883D25F3A91900BEF242 /* Programming assignment 4 1 */,
+				73B2A8F925F282220017D494 /* MoviesList.txt */,
 				73B2A8F125F2811A0017D494 /* Posters */,
 				73AC709225D599C5007D1263 /* AppDelegate.swift */,
 				73AC709425D599C5007D1263 /* SceneDelegate.swift */,
@@ -84,6 +91,8 @@
 				7340A4D625E6BB9B00B97DD8 /* ListViewController.swift */,
 				7340A4D925E6C2CD00B97DD8 /* Movie.swift */,
 				73F28BAE25F0178D00378536 /* MovieCell.swift */,
+				734B884025F403DD00BEF242 /* MovieInfoViewController.swift */,
+				7352F5E12604F61C002B5476 /* MovieAddForm.swift */,
 			);
 			path = AppMor;
 			sourceTree = "<group>";
@@ -146,8 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				73AC709F25D599D7007D1263 /* LaunchScreen.storyboard in Resources */,
+				734B883E25F3A91900BEF242 /* Programming assignment 4 1 in Resources */,
 				73AC709C25D599D7007D1263 /* Assets.xcassets in Resources */,
-				73B2A8FA25F282220017D494 /* MoviesList.json in Resources */,
+				73B2A8FA25F282220017D494 /* MoviesList.txt in Resources */,
 				73B2A8F225F2811B0017D494 /* Posters in Resources */,
 				73AC709A25D599C5007D1263 /* Main.storyboard in Resources */,
 			);
@@ -160,8 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7352F5E22604F61C002B5476 /* MovieAddForm.swift in Sources */,
 				73AC709725D599C5007D1263 /* ViewController.swift in Sources */,
 				734D2A2A25DE87190011C019 /* DrawingViewConrollerViewController.swift in Sources */,
+				734B884125F403DD00BEF242 /* MovieInfoViewController.swift in Sources */,
 				7340A4DA25E6C2CD00B97DD8 /* Movie.swift in Sources */,
 				7340A4D725E6BB9B00B97DD8 /* ListViewController.swift in Sources */,
 				73F28BAF25F0178D00378536 /* MovieCell.swift in Sources */,

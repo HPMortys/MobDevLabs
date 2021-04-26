@@ -176,9 +176,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             table.beginUpdates()
-            Search.remove(at: indexPath.row)
-            table.deleteRows(at: [indexPath], with: .fade)
-            
+            if searching{
+                searchTitle.remove(at: indexPath.row)
+                table.deleteRows(at: [indexPath], with: .fade)
+            }else {
+                Search.remove(at: indexPath.row)
+                table.deleteRows(at: [indexPath], with: .fade)
+            }
             table.endUpdates()
         }
     }

@@ -26,20 +26,24 @@ class MovieAddForm: UIViewController {
         let addMovie_val = Movie(Title: addTitleLbl.text ?? "", Year: addYearLbl.text ?? "", imdbID: "noid", Type: addTypeLbl.text ?? "None", Poster: "")
         
         let valid_year = Int(addMovie_val.Year) != nil
-        let valid_title = addMovie_val.Title != ""
+        let valid_title = addMovie_val.Title.replacingOccurrences(of: " ", with: "") != ""
         
         if valid_year && valid_title{
             guard let new_movie = navigationController?.viewControllers.first as? ListViewController else { return }
             new_movie.Search.append(addMovie_val)
+            _ = navigationController?.popViewController(animated: true)
         }
         else{
             if !valid_title{
+                addTitleLbl.text = ""
                 addTitleLbl.placeholder = "title value is invalid"
             }
             if !valid_year{
+                addYearLbl.text = ""
                 addYearLbl.placeholder = "year value is invalid"
             }
         }
+        
     }
 
     

@@ -38,9 +38,9 @@ class MovieInfoViewController: UIViewController {
         } else {
             infoposter.image = UIImage()
         }
-        
-        
-        
+
+
+
         titleLbl.text = "Title: " + movie!.Title
         YearLbl.text = "Year: " + movie!.Year
         genreLbl.text = "Genre: " + movie!.Genre!

@@ -10,6 +10,7 @@
 		7340A4D725E6BB9B00B97DD8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7340A4D625E6BB9B00B97DD8 /* ListViewController.swift */; };
 		7340A4DA25E6C2CD00B97DD8 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7340A4D925E6C2CD00B97DD8 /* Movie.swift */; };
 		734168FB25E112D500365905 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734168FA25E112D500365905 /* DemoView.swift */; };
+		73424FEC262B747C00424C65 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73424FEB262B747C00424C65 /* Images.swift */; };
 		7342FADF2623799D00CE77A5 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FADE2623799D00CE77A5 /* ImageCollectionViewController.swift */; };
 		734B883E25F3A91900BEF242 /* Programming assignment 4 1 in Resources */ = {isa = PBXBuildFile; fileRef = 734B883D25F3A91900BEF242 /* Programming assignment 4 1 */; };
 		734B884125F403DD00BEF242 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734B884025F403DD00BEF242 /* MovieInfoViewController.swift */; };
@@ -31,12 +32,13 @@
 		7340A4D625E6BB9B00B97DD8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7340A4D925E6C2CD00B97DD8 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		734168FA25E112D500365905 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		73424FEB262B747C00424C65 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		7342FADE2623799D00CE77A5 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		734B883D25F3A91900BEF242 /* Programming assignment 4 1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Programming assignment 4 1"; sourceTree = "<group>"; };
 		734B884025F403DD00BEF242 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
 		734D2A2925DE87190011C019 /* DrawingViewConrollerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewConrollerViewController.swift; sourceTree = "<group>"; };
 		7352F5E12604F61C002B5476 /* MovieAddForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAddForm.swift; sourceTree = "<group>"; };
-		735457A726245C0A0042F0B5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		735457A726245C0A0042F0B5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; tabWidth = 3; };
 		73AC708F25D599C5007D1263 /* AppMor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AC709225D599C5007D1263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AC709425D599C5007D1263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				7352F5E12604F61C002B5476 /* MovieAddForm.swift */,
 				7342FADE2623799D00CE77A5 /* ImageCollectionViewController.swift */,
 				735457A726245C0A0042F0B5 /* CustomCollectionViewCell.swift */,
+				73424FEB262B747C00424C65 /* Images.swift */,
 			);
 			path = AppMor;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				73AC709725D599C5007D1263 /* ViewController.swift in Sources */,
 				734D2A2A25DE87190011C019 /* DrawingViewConrollerViewController.swift in Sources */,
 				734B884125F403DD00BEF242 /* MovieInfoViewController.swift in Sources */,
+				73424FEC262B747C00424C65 /* Images.swift in Sources */,
 				7340A4DA25E6C2CD00B97DD8 /* Movie.swift in Sources */,
 				7342FADF2623799D00CE77A5 /* ImageCollectionViewController.swift in Sources */,
 				7340A4D725E6BB9B00B97DD8 /* ListViewController.swift in Sources */,

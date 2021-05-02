@@ -36,6 +36,7 @@ class ImageCollectionViewController: UIViewController{
     func fetchData(onCompletion: @escaping ([Images]) -> ()) {
         if let url = URL(string: "https://pixabay.com/api/?key=19193969-87191e5db266905fe8936d565&q=small+animals&image_type=photo&per_page=18") {
            URLSession.shared.dataTask(with: url) { data, response, error in
+            if error == nil, let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200{
               if let data = data {
                 do {
                     let res = try JSONDecoder().decode(Images_data.self, from: data)
@@ -46,6 +47,7 @@ class ImageCollectionViewController: UIViewController{
                      print(error)
                   }
                }
+            }
            }.resume()
         }
     }

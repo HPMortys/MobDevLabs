@@ -8,10 +8,11 @@
 import Foundation
 
 class Movies: Codable{
-    let Search: [Movie]
-    
-    init(Search: [Movie]){
+    let Search: [Movie]?
+    let Response: String
+    init(Search: [Movie], Response: String){
         self.Search = Search
+        self.Response = Response
     }
 }
 
@@ -22,6 +23,7 @@ class Movie: Codable {
     let imdbID: String
     let `Type`: String
     let Poster: String
+   
     
     var PG: String?
     var Released: String?
@@ -39,20 +41,20 @@ class Movie: Codable {
     var Production: String?
     
     init(Title : String, Year: String, imdbID: String, Type: String, Poster: String,
-    PG: String = "",
-     Released: String = "",
-     Runtime: String = "",
-     Genre: String = "",
-     Director: String = "",
-     Writer: String = "",
-     Actors: String = "",
-     Plot: String = "",
-     Language: String = "",
-     Country: String = "",
-     Awards: String = "",
-     imdbRating: String = "",
-     imdbVotes: String = "",
-     Production: String = ""
+    PG: String = " ",
+     Released: String = " ",
+     Runtime: String = " ",
+     Genre: String = " ",
+     Director: String = " ",
+     Writer: String = " ",
+     Actors: String = " ",
+     Plot: String = " ",
+     Language: String = " ",
+     Country: String = " ",
+     Awards: String = " ",
+     imdbRating: String = " ",
+     imdbVotes: String = " ",
+     Production: String = " "
     
     ){
         self.Title = Title

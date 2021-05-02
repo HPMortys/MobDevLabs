@@ -13,10 +13,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var table: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
+    @IBOutlet weak var indicator_table: UIActivityIndicatorView!
+    
     var Search = [Movie]()
+    private var url_data = URL(string: "")
+  
+    
     private var searching = false
     private var searchTitle  = [Movie]()
-    
     
 
     
@@ -30,19 +34,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let localData = self.readLocalFile(forName: "MoviesList") {
-            self.parse(jsonData: localData)
-        }
+
+        self.indicator_table.isHidden = true
         table.delegate = self
         table.dataSource = self
         table.tableFooterView = UIView()
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 85
-        
-        
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTarget))
-              
+        
+        
+        
     }
     
     
@@ -62,25 +64,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
    
-    
-    func parse(jsonData: Data) {
-        do {
-            let decoded_movies = try JSONDecoder().decode(Movies.self,
-                                                       from: jsonData)
-            
-            self.Search = decoded_movies.Search
-        
-            DispatchQueue.main.async {
-                self.table.reloadData()
-            }
-           
-            
-        } catch {
-            print("decode error")
-        }
-    }
-    
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching{
             return searchTitle.count
@@ -99,23 +82,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else {
             info_arr = Search
         }
-        
-        
-    
-        let filename = info_arr[indexPath.row].Poster
-        if filename != ""{
-            let image = UIImage(named: "Posters/\(filename)")
-            cell.posterV.image = image
-        } else {
-            cell.posterV.image = UIImage()
-        }
-   
+
         
         cell.titleLbl.text = info_arr[indexPath.row].Title
         cell.yearLbl.text = info_arr[indexPath.row].Year
         cell.typeLbl.text = info_arr[indexPath.row].Type
-        
-       
+        if let url_data: URL = URL(string: info_arr[indexPath.row].Poster){
+                cell.loadImage(from: url_data)
+        }
         
         return cell
     }
@@ -137,8 +111,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
+
+
         var info_arr = [Movie]()
         if searching{
             info_arr = searchTitle
@@ -146,66 +120,93 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else {
             info_arr = Search
         }
-        
-    
+
+
         if segue.identifier == "showDetails"
         {
-        if let localData = self.readLocalFile(forName: "Programming assignment 4 1/\(info_arr[(table.indexPathForSelectedRow?.row)!].imdbID)") {
+   
+      
+            var url_string = "http://www.omdbapi.com/?apikey=7e9fe69e&i=\(info_arr[table.indexPathForSelectedRow!.row].imdbID)"
+            url_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let url_segue = URL(string: url_string) ?? URL(string: "")
+            if let destionation = segue.destination as? MovieInfoViewController{
+          
+                destionation.url_data_segue = url_segue
+               
+            }
             
+
             
-            do {
-                let decoded_movie = try JSONDecoder().decode(Movie.self,
-                                                           from: localData)
-                
-                if let destionation = segue.destination as? MovieInfoViewController{
-                    destionation.movie = decoded_movie       }
+
+            
         
-            } catch {
-                print("decode error")
+        }
+    }
+    
+    
+    
+    
+    func fetchData(onCompletion: @escaping ([Movie]) -> ()) {
+        if self.url_data != nil {
+            URLSession.shared.dataTask(with: self.url_data!) { data, response, error in
+            if error == nil, let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200{
+              if let data = data {
+                do {
+                    let res = try JSONDecoder().decode(Movies.self, from: data)
+                    if res.Response == "True"{
+                        onCompletion(res.Search!)
+                    }
+                    
+                  } catch let error {
+                     print(error)
+                  }
+               }
             }
-        }
-        }
-    }
-    
-    
-    // delete TODO
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            table.beginUpdates()
-            if searching{
-                searchTitle.remove(at: indexPath.row)
-                table.deleteRows(at: [indexPath], with: .fade)
-            }else {
-                Search.remove(at: indexPath.row)
-                table.deleteRows(at: [indexPath], with: .fade)
-            }
-            table.endUpdates()
+           }.resume()
         }
     }
-    
+  
     
     // search TODO
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText == "" {
-            searching = false
+            self.indicator_table.isHidden = true
         }
         else {
-            searchTitle = Search.filter({$0.Title.prefix(searchText.count) == searchText})
             searching = true
-        }
-        DispatchQueue.main.async {
-            self.table.reloadData()
+            if searchText.count > 3 {
+                self.indicator_table.isHidden = false
+                self.indicator_table.startAnimating()
+                var url_string = "http://www.omdbapi.com/?apikey=7e9fe69e&s=\(searchText)&page=1"
+                url_string = url_string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                self.url_data = URL(string: url_string) ?? URL(string: "")
+               
+                
+                let getdataFunc = { (fetchData: [Movie]) in
+                    DispatchQueue.main.async {
+                        self.searchTitle = fetchData
+                        self.indicator_table.stopAnimating()
+                        self.indicator_table.isHidden = true
+                        self.table.reloadData()
+                    }
+                }
+                fetchData(onCompletion: getdataFunc)
+                
+            }
+            else {
+                self.searchTitle.removeAll()
+                self.table.reloadData()
+            }
+            
         }
     }
     
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false 
+    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.indicator_table.isHidden = true
+        self.searchTitle.removeAll()
+        self.table.reloadData()
     }
     
     

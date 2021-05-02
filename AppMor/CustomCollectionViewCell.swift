@@ -14,7 +14,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var task: URLSessionDataTask!
     
     func loadImage(from url: URL) {
-        self.indicator.stopAnimating()
+        self.indicator.startAnimating()
         
         if let task = task{
             task.cancel()
@@ -22,7 +22,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard
-                let data = data,
+                let data = data, error == nil,
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let newImage = UIImage(data: data)
             
             else {
